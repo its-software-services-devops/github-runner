@@ -34,3 +34,5 @@ ENV SYSTEM_STATE_FILE=states.txt
 
 USER runner
 RUN ls -al /home/runner/
+RUN ls -al /home/runner/.config
+
