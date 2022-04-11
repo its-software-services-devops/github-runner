@@ -20,6 +20,17 @@ HELM_EXT_TEMPLATE=${CWD}/manifest-ext.yaml
 GITOPS_FOLDER=gitops-cloned
 GITOPS_MANIFESTS=manifests.yaml
 
+CI_COMMIT_TAG=""
+CI_COMMIT_BRANCH=""
+
+if [[ $GITHUB_REF == refs/tags/* ]]; then
+    CI_COMMIT_TAG=${GITHUB_REF#refs/tags/}
+elif [[ $GITHUB_REF == refs/heads/* ]]; then
+    CI_COMMIT_BRANCH=$(echo ${GITHUB_REF#refs/heads/} | sed -r 's#/+#-#g')
+fi
+export CI_COMMIT_TAG=${CI_COMMIT_TAG}
+export CI_COMMIT_BRANCH=${CI_COMMIT_BRANCH}
+
 ENVIRONMENT=$(determine-env.pl)
 if [ "${ENVIRONMENT}" = 'UNDEFINED' ]; then
     echo "Unable to map environment from branch or tag!!!"
