@@ -9,11 +9,13 @@ echo "#### Running the ${0} script ####"
 
 DOCKER_TAG_LATEST=latest
 
-DOCKER_TAG=${CI_COMMIT_TAG}
-if [ "${DOCKER_TAG}" = '' ]; then
-    # Branch trigger
-    DOCKER_TAG=${CI_COMMIT_SHORT_SHA}
-    DOCKER_TAG_LATEST=${CI_COMMIT_BRANCH}-latest
+if [[ $GITHUB_REF == refs/tags/* ]]; then
+    DOCKER_TAG=${GITHUB_REF#refs/tags/}
+elif [[ $GITHUB_REF == refs/heads/* ]]; then
+    BRANCH=$(echo ${GITHUB_REF#refs/heads/} | sed -r 's#/+#-#g')
+
+    DOCKER_TAG_LATEST=${BRANCH}-latest
+    DOCKER_TAG=$GIT_HASH
 fi
 
 DOCKER_FILE_PATH=""
