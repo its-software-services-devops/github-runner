@@ -32,7 +32,11 @@ ENV PATH="/utils:/scripts:${PATH}"
 ENV GOOGLE_APPLICATION_CREDENTIALS=/gcloud/secret/key.json
 ENV SYSTEM_STATE_FILE=states.txt
 
-USER runner
 RUN ls -al /home/runner/
 RUN ls -al /home/runner/.config
 
+RUN chown runner:runner -R /home/runner/.config
+USER runner
+
+RUN ls -al /home/runner/
+RUN ls -al /home/runner/.config
