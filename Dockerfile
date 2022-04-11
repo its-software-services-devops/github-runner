@@ -1,9 +1,10 @@
 FROM summerwind/actions-runner:v2.289.1-ubuntu-20.04
 
+USER root
 
-RUN curl -fsSL -o /tmp/get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
-RUN chmod 700 /tmp/get_helm.sh
-RUN /tmp/get_helm.sh
+RUN curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+RUN chmod 700 get_helm.sh
+RUN get_helm.sh
 
 #RUN helm version
 #RUN gcloud version
