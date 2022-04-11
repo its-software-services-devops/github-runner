@@ -7,6 +7,9 @@ echo "#### show PROJECT_IMAGE ${1} of env1 ####"
 echo "#### show CONTEXT_PATH ${2} of env2 ####"
 echo "#### Running the ${0} script ####"
 
+echo "GITHUB_REF=[${GITHUB_REF}]"
+echo "GIT_HASH=[${GIT_HASH}]"
+
 DOCKER_TAG_LATEST=latest
 
 if [[ $GITHUB_REF == refs/tags/* ]]; then
