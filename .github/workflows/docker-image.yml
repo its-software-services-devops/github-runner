@@ -32,7 +32,7 @@ jobs:
           VERSION=${GITHUB_REF#refs/tags/}
         elif [[ $GITHUB_REF == refs/heads/* ]]; then
           BRANCH=$(echo ${GITHUB_REF#refs/heads/} | sed -r 's#/+#-#g')
-          VERSION=$BRANCH-$GIT_HASH
+          VERSION=$BRANCH   #-$GIT_HASH
         fi
 
         TAGS="${DOCKER_IMAGE}:${VERSION}"
