@@ -7,8 +7,7 @@ echo "#### show PROJECT_IMAGE ${1} of env1 ####"
 echo "#### show CONTEXT_PATH ${2} of env2 ####"
 echo "#### Running the ${0} script ####"
 
-echo "GITHUB_REF=[${GITHUB_REF}]"
-echo "GIT_HASH=[${GIT_HASH}]"
+GIT_HASH=$(git rev-parse --short "$GITHUB_SHA")
 
 DOCKER_TAG_LATEST=latest
 
@@ -20,6 +19,9 @@ elif [[ $GITHUB_REF == refs/heads/* ]]; then
     DOCKER_TAG_LATEST=${BRANCH}-latest
     DOCKER_TAG=$GIT_HASH
 fi
+
+echo "DOCKER_TAG=[${DOCKER_TAG}]"
+echo "DOCKER_TAG_LATEST=[${DOCKER_TAG_LATEST}]"
 
 DOCKER_FILE_PATH=""
 if [ "${DOCKER_FILE}" != '' ]; then
