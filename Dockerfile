@@ -28,8 +28,6 @@ RUN chmod -R 555 /scripts/*
 COPY utils/* /utils/
 RUN chmod -R 555 /utils/*
 
-USER runner
-
 ENV PATH="/utils:/scripts:${PATH}"
 ENV GOOGLE_APPLICATION_CREDENTIALS=/gcloud/secret/key.json
 ENV SYSTEM_STATE_FILE=states.txt
