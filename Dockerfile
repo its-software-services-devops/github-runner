@@ -33,4 +33,6 @@ ENV GOOGLE_APPLICATION_CREDENTIALS=/gcloud/secret/key.json
 ENV SYSTEM_STATE_FILE=states.txt
 
 RUN chown runner:runner -R /home/runner/.config
+RUN chown runner:runner -R /home/runner/.cache
+
 USER runner
