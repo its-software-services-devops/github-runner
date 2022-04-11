@@ -1,14 +1,14 @@
 FROM summerwind/actions-runner:v2.289.1-ubuntu-20.04
 
 
-RUN curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
-RUN chmod 700 get_helm.sh
-RUN ./get_helm.sh
+#RUN curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+#RUN chmod 700 get_helm.sh
+#RUN ./get_helm.sh
 
-RUN helm version
-RUN gcloud version
+#RUN helm version
+#RUN gcloud version
 
-RUN helm plugin install https://github.com/hayorov/helm-gcs.git
+#RUN helm plugin install https://github.com/hayorov/helm-gcs.git
 
 RUN curl -L -o jsonnet.tar.gz https://github.com/google/jsonnet/releases/download/v0.17.0/jsonnet-bin-v0.17.0-linux.tar.gz
 RUN tar -xvf jsonnet.tar.gz; cp jsonnet jsonnetfmt /usr/bin/
