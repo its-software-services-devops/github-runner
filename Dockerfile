@@ -1,4 +1,5 @@
-FROM google/cloud-sdk:357.0.0
+FROM summerwind/actions-runner:v2.289.1-ubuntu-20.04
+
 
 RUN curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
 RUN chmod 700 get_helm.sh

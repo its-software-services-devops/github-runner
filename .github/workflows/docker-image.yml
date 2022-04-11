@@ -8,7 +8,6 @@ on:
 env:
   ENV_GCR_IMAGE: gcr.io/its-artifact-commons/github-runner
   RUN_REGION: asia-southeast1
-  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
