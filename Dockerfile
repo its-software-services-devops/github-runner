@@ -17,7 +17,8 @@ RUN apt-get update && \
     apt-get update -y && \
     apt-get install google-cloud-sdk -y
 RUN gcloud version
-RUN gcloud components install kubectl
+
+RUN apt-get install kubectl
 
 RUN curl -L -o jsonnet.tar.gz https://github.com/google/jsonnet/releases/download/v0.17.0/jsonnet-bin-v0.17.0-linux.tar.gz
 RUN tar -xvf jsonnet.tar.gz; cp jsonnet jsonnetfmt /usr/bin/
