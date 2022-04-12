@@ -1,4 +1,5 @@
 FROM summerwind/actions-runner:v2.289.1-ubuntu-20.04
+ARG VERSION
 
 USER root
 
@@ -27,6 +28,8 @@ RUN jsonnet --version
 COPY scripts/* /home/runner/.local/bin/
 COPY utils/* /home/runner/.local/bin/
 RUN chmod -R 555 /home/runner/.local/bin/*
+
+RUN echo ${VERSION} > /home/runner/version.txt
 
 ENV GOOGLE_APPLICATION_CREDENTIALS=/gcloud/secret/key.json
 ENV SYSTEM_STATE_FILE=states.txt

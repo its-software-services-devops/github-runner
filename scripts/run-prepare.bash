@@ -2,8 +2,9 @@
 
 GCR=asia.gcr.io
 GAR=asia-southeast1-docker.pkg.dev
+VERSION=$(cat ${HOME}/version.txt)
 
-echo "#### Running the ${0} script ####"
+echo "#### Running the ${0} script, docker version [${VERSION}] ####"
 
 gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS}
 gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin ${GCR}
