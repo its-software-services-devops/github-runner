@@ -24,13 +24,10 @@ RUN curl -L -o jsonnet.tar.gz https://github.com/google/jsonnet/releases/downloa
 RUN tar -xvf jsonnet.tar.gz; cp jsonnet jsonnetfmt /usr/bin/
 RUN jsonnet --version
 
-COPY scripts/* /scripts/
-RUN chmod -R 555 /scripts/*
+COPY scripts/* /home/runner/.local/bin/
+COPY utils/* /home/runner/.local/bin/
+RUN chmod -R 555 /home/runner/.local/bin/*
 
-COPY utils/* /utils/
-RUN chmod -R 555 /utils/*
-
-ENV PATH="/utils:/scripts:${PATH}"
 ENV GOOGLE_APPLICATION_CREDENTIALS=/gcloud/secret/key.json
 ENV SYSTEM_STATE_FILE=states.txt
 
