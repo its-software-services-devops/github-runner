@@ -78,6 +78,7 @@ jobs:
       run: |
         echo ${{ steps.prep.outputs.version }} > version.txt
         ls -lrt
+        cat version.txt
 
     - name: Build and push images
       uses: docker/build-push-action@v2
