@@ -74,12 +74,6 @@ jobs:
         # via gcloud command-line tool.
         gcloud auth configure-docker
 
-    - name: Generate version file
-      run: |
-        echo ${{ steps.prep.outputs.version }} > version.txt
-        ls -lrt
-        cat version.txt
-
     - name: Build and push images
       uses: docker/build-push-action@v2
       with:
@@ -87,7 +81,7 @@ jobs:
         push: true
         load: false
         tags: ${{ steps.prep.outputs.gcr_tags }}
-        build-args: version=${{ steps.prep.outputs.version }}
+        build-args: VERSION=${{ steps.prep.outputs.version }}
 
     - name: show job status
       if: always()
