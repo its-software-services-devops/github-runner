@@ -74,6 +74,10 @@ jobs:
         # via gcloud command-line tool.
         gcloud auth configure-docker
 
+    - name: Generate version file
+      run: |
+        echo ${{ steps.prep.outputs.version }} > version.txt
+
     - name: Build and push images
       uses: docker/build-push-action@v2
       with:
