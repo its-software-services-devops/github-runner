@@ -7,14 +7,21 @@ echo "#### show PROJECT_IMAGE ${1} of env1 ####"
 echo "#### show CONTEXT_PATH ${2} of env2 ####"
 echo "#### Running the ${0} script ####"
 
+GIT_HASH=$(git rev-parse --short "$GITHUB_SHA")
+
 DOCKER_TAG_LATEST=latest
 
-DOCKER_TAG=${CI_COMMIT_TAG}
-if [ "${DOCKER_TAG}" = '' ]; then
-    # Branch trigger
-    DOCKER_TAG=${CI_COMMIT_SHORT_SHA}
-    DOCKER_TAG_LATEST=${CI_COMMIT_BRANCH}-latest
+if [[ $GITHUB_REF == refs/tags/* ]]; then
+    DOCKER_TAG=${GITHUB_REF#refs/tags/}
+elif [[ $GITHUB_REF == refs/heads/* ]]; then
+    BRANCH=$(echo ${GITHUB_REF#refs/heads/} | sed -r 's#/+#-#g')
+
+    DOCKER_TAG_LATEST=${BRANCH}-latest
+    DOCKER_TAG=$GIT_HASH
 fi
+
+echo "DOCKER_TAG=[${DOCKER_TAG}]"
+echo "DOCKER_TAG_LATEST=[${DOCKER_TAG_LATEST}]"
 
 DOCKER_FILE_PATH=""
 if [ "${DOCKER_FILE}" != '' ]; then
