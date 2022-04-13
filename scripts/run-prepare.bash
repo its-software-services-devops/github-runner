@@ -2,7 +2,7 @@
 
 GCR=asia.gcr.io
 GAR=asia-southeast1-docker.pkg.dev
-VERSION=$(cat ${HOME}/version.txt)
+VERSION=$(cat /data/version.txt)
 KEYFILE_DIR=$(dirname ${GOOGLE_APPLICATION_CREDENTIALS})
 
 echo "#### Running the ${0} script, docker version [${VERSION}] ####"
@@ -21,4 +21,4 @@ git config --global user.email "devops-cicd@everapp.io"
 git config --global user.name "devops-cicd"
 
 # Install here instead of in the Dockerfile
-helm plugin install https://github.com/hayorov/helm-gcs.git
+# helm plugin install https://github.com/hayorov/helm-gcs.git
