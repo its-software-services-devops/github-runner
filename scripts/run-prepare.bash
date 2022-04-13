@@ -2,7 +2,7 @@
 
 GCR=asia.gcr.io
 GAR=asia-southeast1-docker.pkg.dev
-VERSION=$(cat ${HOME}/version.txt)
+VERSION=$(cat /home/runner/version.txt)
 
 echo "#### Running the ${0} script, docker version [${VERSION}] ####"
 
