@@ -2,7 +2,7 @@ FROM ubuntu:20.04
 #summerwind/actions-runner:v2.289.1-ubuntu-20.04
 ARG VERSION
 
-USER root
+#USER root
 
 RUN apt-get update -y && apt-get install -y curl git
 
