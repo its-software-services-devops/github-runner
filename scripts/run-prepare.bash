@@ -2,7 +2,7 @@
 
 GCR=asia.gcr.io
 GAR=asia-southeast1-docker.pkg.dev
-VERSION=$(cat /home/runner/version.txt)
+VERSION=$(cat ${HOME}/version.txt)
 KEYFILE_DIR=$(dirname ${GOOGLE_APPLICATION_CREDENTIALS})
 
 echo "#### Running the ${0} script, docker version [${VERSION}] ####"

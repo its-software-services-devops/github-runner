@@ -1,4 +1,5 @@
-FROM summerwind/actions-runner:v2.289.1-ubuntu-20.04
+FROM ubuntu:20.04 
+#summerwind/actions-runner:v2.289.1-ubuntu-20.04
 ARG VERSION
 
 USER root
@@ -25,16 +26,16 @@ RUN curl -L -o jsonnet.tar.gz https://github.com/google/jsonnet/releases/downloa
 RUN tar -xvf jsonnet.tar.gz; cp jsonnet jsonnetfmt /usr/bin/
 RUN jsonnet --version
 
-COPY scripts/* /home/runner/.local/bin/
-COPY utils/* /home/runner/.local/bin/
-RUN chmod -R 555 /home/runner/.local/bin/*
+COPY scripts/* /usr/bin/
+COPY utils/* /usr/bin/
+RUN chmod -R 555 /usr/bin/*.bash /usr/bin/*.pl
 
-RUN echo ${VERSION} > /home/runner/version.txt
+RUN echo ${VERSION} > ${HOME}/version.txt
 
 ENV GOOGLE_APPLICATION_CREDENTIALS=/gcloud/secret/key.json
 ENV SYSTEM_STATE_FILE=states.txt
 
-RUN chown runner:runner -R /home/runner/.config
-RUN chown runner:runner -R /home/runner/.cache
+#RUN chown runner:runner -R ${HOME}/.config
+#RUN chown runner:runner -R ${HOME}/.cache
 
 #USER runner
