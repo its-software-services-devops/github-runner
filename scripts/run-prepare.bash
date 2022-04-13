@@ -19,3 +19,6 @@ gcloud auth print-access-token | docker login -u oauth2accesstoken --password-st
 
 git config --global user.email "devops-cicd@everapp.io"
 git config --global user.name "devops-cicd"
+
+# Install here instead of in the Dockerfile
+helm plugin install https://github.com/hayorov/helm-gcs.git

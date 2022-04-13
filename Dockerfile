@@ -13,7 +13,7 @@ RUN ./get_helm.sh
 
 RUN helm version
 
-RUN helm plugin install https://github.com/hayorov/helm-gcs.git
+#RUN helm plugin install https://github.com/hayorov/helm-gcs.git
 
 #RUN apt-get update && \
 #    apt-get install -y curl gnupg && \
