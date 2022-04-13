@@ -4,7 +4,7 @@ ARG VERSION
 
 USER root
 
-RUN apt-get install curl
+RUN apt-get update -y && apt-get install -y curl
 
 RUN curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
 RUN chmod 700 get_helm.sh
@@ -22,7 +22,7 @@ RUN apt-get update && \
     apt-get install google-cloud-sdk -y
 RUN gcloud version
 
-RUN apt-get install kubectl
+RUN apt-get install -y kubectl
 
 RUN curl -L -o jsonnet.tar.gz https://github.com/google/jsonnet/releases/download/v0.17.0/jsonnet-bin-v0.17.0-linux.tar.gz
 RUN tar -xvf jsonnet.tar.gz; cp jsonnet jsonnetfmt /usr/bin/
